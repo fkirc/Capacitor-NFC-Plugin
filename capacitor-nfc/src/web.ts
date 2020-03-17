@@ -27,7 +27,7 @@ export class NFCPluginWeb extends WebPlugin implements NFCPlugin {
   }
 
   showSettings(): Promise<void> {
-    return Promise.reject('NFC not supported in the browser');
+    return Promise.reject('NFC notfs supported in the browser');
   }
 
 }
