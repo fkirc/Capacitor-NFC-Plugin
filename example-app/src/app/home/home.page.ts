@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
-import {Plugins, Capacitor, mergeWebPlugin} from '@capacitor/core';
-import {NFCPluginWeb} from 'capacitor-nfc';
+import {mergeWebPlugin, Plugins} from '@capacitor/core';
+import {NFCPlugin, NFCPluginWeb} from 'capacitor-nfc';
 
 @Component({
   selector: 'app-home',
@@ -14,17 +14,12 @@ export class HomePage {
 
     mergeWebPlugin(Plugins, new NFCPluginWeb());
 
-    const NFC = Plugins.NFC as NFCPluginWeb;
-
-    console.log('NFC available: ', Capacitor.isPluginAvailable('NFC'));
+    const NFC = Plugins.NFC as NFCPlugin;
 
     NFC.showSettings().then((status => {
       console.log('NFC.showSettings resolved', status);
     })).catch((status: any) => {
       console.log('NFC.showSettings rejected', status);
     });
-    // } else {
-    //   console.log('NFC is not available');
-    //  }
   }
 }
